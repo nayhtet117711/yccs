@@ -1,0 +1,66 @@
+body {
+	margin: 0;
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto",
+		"Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans",
+		"Helvetica Neue", sans-serif;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+}
+
+code {
+	font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+		monospace;
+}
+
+.ycc-nav-title {
+	opacity: 0.9 !important;
+	transition: 0.4s !important;
+}
+
+.ycc-nav-title:hover {
+	opacity: 1 !important;
+	text-shadow: -1px 0px 2px #e5e5e5 !important;
+}
+
+.ycc-menu {
+	background-color: #00000000 !important;
+	cursor: pointer;
+	opacity: 0.9;
+	transition: 0.4s;
+}
+
+.ycc-menu:hover {
+	background-color: #ffffff14 !important;
+	cursor: pointer;
+	color: white;
+	border-radius: 2;
+	opacity: 1;
+	/* box-shadow: 0 1px 2px 0 rgba(0,0,0,0.1), 0 1px 12px 0 rgba(0,0,0,0.1) !important; */
+}
+
+.ycc-menu.menuActive {
+	background-color: #ffffff08 !important;
+	cursor: pointer;
+	color: white;
+	border-radius: 2;
+	opacity: 1;
+	border-bottom: 2px solid #d5d5d5;
+}
+
+.survey-button {
+	padding-top: 1.1em !important;
+	padding-bottom: 1.1em !important;
+	padding-left: 2em !important;
+	padding-right: 2em !important;
+	border-radius: 6em !important;
+	background: linear-gradient(to right, #5546ff, #814af3) !important;
+	color: white !important;
+	font-size: 1.2em !important;
+	transition: 0.4s;
+}
+
+.survey-button:hover {
+	background: linear-gradient(to right, #5546ff, #5546ff) !important;
+	box-shadow: 20px 20px !important;
+	box-shadow: 0 2px 6px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19) !important;
+}
