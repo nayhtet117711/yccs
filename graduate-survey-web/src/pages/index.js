@@ -1,9 +1,11 @@
 import React, { useState } from "react"
+import { Redirect, Route, Switch, withRouter } from "react-router-dom"
+
 import SurveyHome from "./SurveyHome.js"
 import SurveySurvey from "./SurveySurvey.js"
 import SurveyResult from "./SurveyResult.js"
-
-import { Redirect, Route, Switch, withRouter } from "react-router-dom"
+import SvgFacebook from './home/SvgFacebook'
+import webImg from './home/yccWebsite.png'
 
 const Pages = (props) => {
     return (
@@ -70,9 +72,70 @@ const Header = (props) => {
 
 const Footer = () => {
     return (
-        <div className="py-5 has-text-centered mt-6" style={{ backgroundColor: "#00000010", backdropFilter: "blur(4px)"}}>
-            Footer
-        </div>
+        <footer class="footer"
+            style={{
+                backgroundColor: "none",
+                backdropFilter: "blur(4px)",
+                // position: "absolute"#D29AF7,
+                // zIndex: -1,
+                width: "100%",
+                height: "20%",
+                backgroundPosition: "center bottom",
+                backgroundImage: "linear-gradient(to right, #4568dc,#9634F1, #AA36E7)",
+                opacity: 1.0,
+                backgroundSize: "cover",
+                // fontFamily: 'Roboto, sans-serif;'
+            }}>
+            <div className="container py-5 has-text-centered mt-6">
+                <div className="columns is-mobile is-desktop">
+                    <div className="column mx-3 pl-3 is-4">
+                        <div className="is-3 has-text-white has-text-weight-bold">
+                            CONTACT
+            </div>
+                        <div className="is-4 has-text-white has-text-weight-bold pt-3">
+                            +95-025178100, +95-015178200, +95-025178300
+            </div>
+                        <div className="is-4 has-text-white has-text-weight-bold">
+                            info@utycc.edu.mm
+            </div>
+                        <div className="is-4 has-text-white has-text-weight-bold">
+                            most.yatanarpon@gmail.com
+            </div>
+                    </div>
+
+                    <div className="column is-3">
+                        <p className=" is-3 has-text-white has-text-weight-bold is-vcenter mr-6 pr-4">
+                            SOCIAL
+            </p>
+                        <div className="row is-flex is-center" >
+                            <a className="is-5 has-text-white has-text-weight-bold ml-4 pl-6 pt-3 is-vcenter" href="https://www.facebook.com/coeutycc" target="_blank">
+                                <SvgFacebook className="image is-32x32" />facebook
+                </a>
+                            <a className="has-text-weight-bold pt-3 is-vcenter pl-3" href="https://www.utycc.edu.mm/" target="_blank">
+                                <figure className="image is-32x32 is-5 has-text-white">
+                                    <img src={webImg} />website
+                </figure>
+                            </a>
+                        </div>
+                    </div>
+
+                    <div className="column is-4">
+                        <div className="is-3 has-text-white has-text-weight-bold">
+                            LOCATION
+                </div>
+                        <div className="is-4 has-text-white has-text-weight-bold pt-3">
+                            At 28 miles on Mandalay-Lashio road,
+                </div>
+                        <div className="is-4 has-text-white has-text-weight-bold">
+                            between Pyin Sar Village and Thone Taung Village,
+                </div>
+                        <div className="is-4 has-text-white has-text-weight-bold">
+                            Pyin Oo Lwin, Myanmar;
+                </div>
+                    </div>
+                </div>
+            </div>
+        </footer>
     )
 }
 

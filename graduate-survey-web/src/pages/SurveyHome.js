@@ -4,18 +4,26 @@ import cfg from "../configs"
 
 import Svg1 from "./home/Svg1"
 
+import Svg2 from './home/SvgSurvey1'
+
+import Svg3 from './home/SvgSurvey2'
+
 import Component from "../components"
+
+import { withRouter } from 'react-router-dom';
 
 class SurveyHome extends React.Component {
   constructor() {
     super()
   }
+
   render() {
-    const topSpace = -300
+    const topSpace = -100
     const headerHeight = 60
+    console.log('Route->', this.props.history)
     return (
       <div className=""  >
-        <div style={{ 
+        <div style={{
           position: "absolute",
           zIndex: -1,
           width: "100%",
@@ -26,7 +34,7 @@ class SurveyHome extends React.Component {
           backgroundPosition: "center bottom",
           backgroundSize: "cover",
         }}></div>
-        
+
         <PageTitle />
 
         <div style={{ height: 300 }}></div>
@@ -43,6 +51,10 @@ class SurveyHome extends React.Component {
           And lastly, don’t worry. Details of personal data will never be distributed or will not be used for any other purposes.
         </div>
 
+        <div className="p-5 is-size-5 has-text-centered">
+          <Component.SurveyButton onClick={() => this.props.history.push('/survey')}>Take Survey</Component.SurveyButton>
+        </div>
+
         <div>
 
         </div>
@@ -53,7 +65,7 @@ class SurveyHome extends React.Component {
 }
 
 const PageTitle = () => {
-  return(
+  return (
     <div style={{ marginTop: 2, height: 230 }} className="columns is-centered is-vcentered">
       <div className="column is-four-fifths-desktop is-two-thirds-fullhd">
         <div className="columns is-vcentered is-centered">
@@ -70,104 +82,104 @@ const PageTitle = () => {
           </div>
           <div className="is-hidden-touch column has-text-white" style={{ marginTop: 300 }} align="right">
             <img src="/home-top-right.png" style={{ maxWidth: 320 }} />
-          </div> 
+          </div>
         </div>
       </div>
     </div>
   )
 }
 
-const ContentRow1 = () => {
+const ContentRow1 = (props) => {
   return (
-    <div className="" style={{  marginTop: 2, }}>
-        <div className="columns is-centered is-vcentered">
-          <div className="column is-four-fifths-desktop is-two-thirds-fullhd">
-            <div className="columns is-vcentered is-centered">
-              <div className="column has-text-black px-6">
-                <div className="px-3" style={{  marginTop: -160, height: 140}}>
-                  <Component.SurveyButton>Take Survey</Component.SurveyButton>
-                </div>
-                <div className="is-size-3">
-                  What is this survey?
-                </div>
-                <div className="is-size-5 has-text-weight-light py-5">
-                  This is a survey for UTYCC graduates. Every year there are many students graduating from UTYCC but there is no systematic information about them yet. 
-                </div>
+    <div className="" style={{ marginTop: 2, }}>
+      <div className="columns is-centered is-vcentered">
+        <div className="column is-four-fifths-desktop is-two-thirds-fullhd">
+          <div className="columns is-vcentered is-centered">
+            <div className="column has-text-black px-6">
+              <div className="px-3" style={{ marginTop: -160, height: 140 }}>
+                <Component.SurveyButton onClick={() => window.location.href = "/survey"}>Take Survey</Component.SurveyButton>
               </div>
-              <div className="is-hidden-touch column has-text-black p-5" align="center">
-                <Svg1/>
-              </div>
+              <div className="is-size-3">
+                What is this survey?
+                </div>
+              <div className="is-size-5 has-text-weight-light py-5">
+                This is a survey for UTYCC graduates. Every year there are many students graduating from UTYCC but there is no systematic information about them yet.
+                </div>
+            </div>
+            <div className="is-hidden-touch column has-text-black p-5" align="center">
+              <Svg1 />
             </div>
           </div>
         </div>
+      </div>
     </div>
   )
 }
 
 const ContentRow2 = () => {
   return (
-    <div className="" style={{  marginTop: 2, }}>
-        <div className="columns is-centered is-vcentered">
-          <div className="column is-four-fifths-desktop is-two-thirds-fullhd">
-            <div className="columns is-vcentered is-centered">
-              <div className="is-hidden-touch column has-text-black p-5">
-                <Svg1/>
-              </div>
-              <div className="column has-text-black px-6">
-                <div className="is-size-5 has-text-weight-light py-5" >
+    <div className="" style={{ marginTop: 2, }}>
+      <div className="columns is-centered is-vcentered">
+        <div className="column is-four-fifths-desktop is-two-thirds-fullhd">
+          <div className="columns is-vcentered is-centered">
+            <div className="is-hidden-touch column has-text-black p-5">
+              <Svg3 />
+            </div>
+            <div className="column has-text-black px-6">
+              <div className="is-size-5 has-text-weight-light py-5" >
                 Whether the students working now or is in another academic program, is not known and it would be great to know if the academic plan and years in UTYCC were great experiences for graduated students.
                 </div>
-              </div>
             </div>
           </div>
         </div>
+      </div>
     </div>
   )
 }
 
 const ContentRow3 = () => {
   return (
-    <div className="" style={{  marginTop: 2, }}>
-        <div className="columns is-centered is-vcentered">
-          <div className="column is-four-fifths-desktop is-two-thirds-fullhd">
-            <div className="columns is-vcentered is-centered">
-              <div className="column has-text-black px-6">
-                <div className="is-size-3">
-                  Why you should be taking this survey?
+    <div className="" style={{ marginTop: 2, }}>
+      <div className="columns is-centered is-vcentered">
+        <div className="column is-four-fifths-desktop is-two-thirds-fullhd">
+          <div className="columns is-vcentered is-centered">
+            <div className="column has-text-black px-6">
+              <div className="is-size-3">
+                Why you should be taking this survey?
                 </div>
-                <div className="is-size-5 has-text-weight-light py-5">
-                  By taking this survey, the university can be in check with the trendings in working invironments, can be ahead with updated academic plans and courses, and can know which parts have to be improved.
+              <div className="is-size-5 has-text-weight-light py-5">
+                By taking this survey, the university can be in check with the trendings in working invironments, can be ahead with updated academic plans and courses, and can know which parts have to be improved.
                 </div>
-              </div>
-              <div className="is-hidden-touch column has-text-black p-5" align="center">
-                <Svg1/>
-              </div>
+            </div>
+            <div className="is-hidden-touch column has-text-black p-5" align="center">
+              <Svg1 />
             </div>
           </div>
         </div>
+      </div>
     </div>
   )
 }
 
-const ContentRow4 = () => {
+const ContentRow4 = () => { 
   return (
-    <div className="" style={{  marginTop: 2, }}>
-        <div className="columns is-centered is-vcentered">
-          <div className="column is-four-fifths-desktop is-two-thirds-fullhd">
-            <div className="columns is-vcentered is-centered">
-              <div className="is-hidden-touch column has-text-black p-5">
-                  <Svg1/>
-              </div>
-              <div className="column has-text-black px-6">
-                <div className="is-size-5 has-text-weight-light py-5" >
+    <div className="" style={{ marginTop: 2, }}>
+      <div className="columns is-centered is-vcentered">
+        <div className="column is-four-fifths-desktop is-two-thirds-fullhd">
+          <div className="columns is-vcentered is-centered">
+            <div className="is-hidden-touch column has-text-black p-5">
+              <Svg1 />
+            </div>
+            <div className="column has-text-black px-6">
+              <div className="is-size-5 has-text-weight-light py-5" >
                 Juniors can know which kind of working environments their seniors are working on, and can prepare ahead of time for career choices.
                 </div>
-              </div>
             </div>
           </div>
         </div>
+      </div>
     </div>
   )
 }
 
-export default SurveyHome;
+export default withRouter(SurveyHome);
