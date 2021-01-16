@@ -1,39 +1,42 @@
 import React from "react"
-import { ResponsivePie } from '@nivo/pie'
+import { ResponsivePie } from "@nivo/pie"
+
 const SurveyPieChart = props => {
-    // const { data } = props
+    const { data, isLegend } = props
     return (
         <ResponsivePie
             data={data}
             margin={{ top: 40, right: 80, bottom: 80, left: 80 }}
             innerRadius={0.5}
             padAngle={0.7}
-            cornerRadius={3}
+            cornerRadius={0.5}
             colors={{ datum: 'data.color' }}
-            borderWidth={1}
+            borderWidth={0.1}
             borderColor={{ from: 'color', modifiers: [['darker', 0.2]] }}
+            radialLabel="value"
             radialLabelsTextColor="#333333"
             radialLabelsLinkOffset={-3}
             radialLabelsLinkDiagonalLength={22}
             radialLabelsLinkHorizontalLength={0}
             radialLabelsLinkColor={{ from: 'color', modifiers: [] }}
-            sliceLabelsSkipAngle={10}
+            enableSliceLabels={false}
+            sliceLabelsSkipAngle={8}
             sliceLabelsTextColor="#333333"
-            legends={[
+
+            legends={isLegend ? [
                 {
-                    anchor: 'bottom',
-                    direction: 'row',
+                    anchor: 'right',
+                    direction: 'column',
                     justify: false,
-                    translateX: 0,
-                    translateY: 56,
+                    translateX: 28,
+                    translateY: 32,
                     itemsSpacing: 0,
-                    itemWidth: 100,
-                    itemHeight: 18,
+                    itemWidth: 80,
+                    itemHeight: 32,
                     itemTextColor: '#999',
                     itemDirection: 'left-to-right',
                     itemOpacity: 1,
                     symbolSize: 18,
-                    symbolShape: 'circle',
                     effects: [
                         {
                             on: 'hover',
@@ -43,24 +46,11 @@ const SurveyPieChart = props => {
                         }
                     ]
                 }
-            ]}
+            ] : []}
         />
     )
 }
 
-export default SurveyPieChart
 
-const data = [
-    {
-        "id": "Male",
-        "label": "Male",
-        "value": 927,
-        "color": "blue"
-    },
-    {
-        "id": "Female",
-        "label": "Female",
-        "value": 1073,
-        "color": "purple"
-    },
-]
+export default SurveyPieChart;
+

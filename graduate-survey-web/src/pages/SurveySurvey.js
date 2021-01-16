@@ -48,7 +48,7 @@ class SurveySurvey extends Component {
     );
   };
   _handleRadioChange(ansId, quesId, subQuesId, keys, other) {
-    console.log("Radio Change")
+    console.log("Radio Change",ansId, quesId, subQuesId, keys, other)
     const RadioAns = {
       // ...Ans,
       optionChoiceId: ansId,
@@ -68,10 +68,10 @@ class SurveySurvey extends Component {
       if (this.isQuesId(quesId).length >= 1) {
         this.state.AnswerData.splice(this.isQuesIdIndex(quesId), 1, RadioAns);
       } else {
-        setAnswerData(this.state.AnswerData.concat(RadioAns));
+        this.setState({ AnswerData: this.state.AnswerData.concat(RadioAns) });
       }
     }
-    setIsAnswer(this.state.AnswerData.map((v, k) => v.optionChoiceId));
+    // setIsAnswer(this.state.AnswerData.map((v, k) => v.optionChoiceId));
 
 
   }
@@ -81,19 +81,19 @@ class SurveySurvey extends Component {
     console.log("Sample Data ->", surveyData.length)
     console.log("PageNo->", this.state.pageNo)
     const section_question_data = surveyData[this.state.pageNo].questions;
-    const Ans = {
-      other: "",
-      optionChoiceId: null,
-      userId: parseInt(userId),
-      questionId: null,
-      survey_headers_id: parseInt(surveyHeaderId),
-      building_id: buildingId,
-      keyValue: null,
-      subQuestionId: null,
-      surveySectionId: parseInt(surveySectionId),
-      countryId: parseInt(countryId),
-      selected: false,
-    };
+    // const Ans = {
+    //   other: "",
+    //   optionChoiceId: null,
+    //   userId: parseInt(userId),
+    //   questionId: null,
+    //   survey_headers_id: parseInt(surveyHeaderId),
+    //   building_id: buildingId,
+    //   keyValue: null,
+    //   subQuestionId: null,
+    //   surveySectionId: parseInt(surveySectionId),
+    //   countryId: parseInt(countryId),
+    //   selected: false,
+    // };
     console.log("section Data->", section_question_data)
     return (
       <div className="is-size-1-mobile p*-0 m*-0">
@@ -118,6 +118,7 @@ class SurveySurvey extends Component {
             <SurveyQuestionColCard
               questionData={section_question_data}
               _handleRadioChange={this._handleRadioChange}
+              ans_data={this.state.AnswerData}
             />
           </div>
           <div className="column is-one-quarter is-gapless is-align-self-flex-end" style={{ paddingLeft: '-50px', left: 0 }}>
@@ -154,11 +155,12 @@ const PageTitle = () => {
 
 
 const SurveyQuestionColCard = (props) => {
-  const { questionData, _handleRadioChange } = props
+  const { questionData, _handleRadioChange, ans_data, chacked, } = props
   return (
     <div className="p-3" style={{ fontFamily: "Roboto, sans-serif", font: "{font}.small", boxShadow: "5px 5px 3px rgba(0, 0, 0, 0.2)" }}>
       <div className="is-flex-direction-row is-justify-content-center p-3">
         {questionData.map((ques, key) => {
+          const remakeQuestionId = ques.question_id.toString()
           return (
             <div>
               <div className="mx-3 p-2"> {`${ques.question_id}.`}{ques.question_name}</div>
@@ -174,6 +176,9 @@ const SurveyQuestionColCard = (props) => {
                           <Radio
                             value={ques.option_choices}
                             _handleRadioChange={_handleRadioChange}
+                            quesId={remakeQuestionId}
+                            ans_data={ans_data}
+
                           />
                         </div>
                       ) : (
